@@ -1,0 +1,22 @@
+
+<button id="sidebar-toggle" class="sidebar-btn" (click)="toggleSidebar()">☰ </button>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar" [class.active]="isActive">
+    <!-- Botón de cierre -->
+    <button class="close-btn" (click)="toggleSidebar()">&times;</button>
+
+    <!-- Título -->
+    <h2 class="sidebar-title">Temas Destacados</h2>
+    <hr>
+
+    <!-- Lista de temas -->
+    <ul class="sidebar-list" >
+        <li><button><a routerLink="/gaming">🎮 Gaming</a></button></li>
+        <li><a routerLink="/informatica">💻 Informática</a></li>
+        <li><a routerLink="/maternidad">👶 Maternidad</a></li>
+        <li><a routerLink="/cine">🎬 Cine</a></li>
+        <li><a routerLink="/relaciones">❤️ Relaciones</a></li>
+        <li><a routerLink="/tareas-domesticas">🏡 Tareas Domésticas</a></li>
+    </ul>
+</div>

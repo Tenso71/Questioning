@@ -1,0 +1,17 @@
+<div class="principal-container">
+    <h2 class="section-title">🔥 Preguntas Favoritas</h2>
+    
+    <div class="pregunta" *ngFor="let pregunta of preguntasFavoritas">
+        <div class="pregunta-info">
+            <h3 class="pregunta-titulo">{{ pregunta.titulo }}</h3>
+            <p class="pregunta-autor">📌 Publicado por: <b>{{ pregunta.autor }}</b></p>
+        </div>
+
+        <div class="pregunta-estadisticas">
+            <span>👍 {{ pregunta.votos }} votos</span>
+            <span>💬 {{ pregunta.respuestas }} respuestas</span>
+        </div>
+
+        <button class="ver-mas-btn">Ver más</button>
+    </div>
+</div>

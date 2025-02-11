@@ -1,0 +1,95 @@
+/* ===== Botón para abrir el Sidebar (Encima del Header) ===== */
+.sidebar-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    z-index: 1100; /* Para que siempre esté encima */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-btn:hover {
+    background: #4a148c;
+    transform: scale(1.1);
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    position: fixed;
+    left: -300px;
+    top: 80px; /* Ajuste para que no cubra el header */
+    width: 260px;
+    height: calc(100% - 80px);
+    background: #8e24aa;
+    padding: 20px;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border-radius: 0 15px 15px 0;
+}
+
+/* Cuando el Sidebar está activo */
+.sidebar.active {
+    left: 0;
+}
+
+/* ===== Botón de cierre ===== */
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    float: right;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #d1c4e9;
+    transform: rotate(90deg);
+}
+
+/* ===== Título del Sidebar ===== */
+.sidebar-title {
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* ===== Lista de Temas (Botones) ===== */
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ===== Estilos de los Botones ===== */
+.sidebar-item {
+    background: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-item:hover {
+    background: #4a148c;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}

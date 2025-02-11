@@ -1,0 +1,46 @@
+/* Contenedor general de las preguntas */
+.pregunta-lista {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;  /* Alineación de todo hacia la derecha */
+  padding: 20px;
+}
+
+/* Estilo individual de cada pregunta */
+.pregunta {
+  background-color: #f8f9fa;  /* Fondo suave */
+  border: 1px solid #ddd;     /* Borde suave */
+  border-radius: 8px;         /* Bordes redondeados */
+  padding: 15px;
+  margin: 10px 0;
+  width: 80%;  /* Ancho del contenedor de las preguntas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
+  text-align: right;  /* Alineamos el contenido de cada pregunta hacia la derecha */
+}
+
+/* Títulos */
+.pregunta h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #5d2083;  /* Color morado para el título */
+  margin-bottom: 10px;
+}
+
+/* Texto debajo del título */
+.pregunta p {
+  font-size: 1em;
+  color: #333;  /* Color oscuro para el texto */
+  margin: 5px 0;
+}
+
+/* Estilo para los números de votos y respuestas */
+.pregunta p span {
+  font-weight: bold;
+}
+
+/* Efecto hover para las preguntas */
+.pregunta:hover {
+  transform: scale(1.02);  /* Agrandar ligeramente */
+  transition: transform 0.2s ease-in-out;  /* Transición suave */
+  background-color: #e9ecef;  /* Cambio de fondo al pasar el mouse */
+}
