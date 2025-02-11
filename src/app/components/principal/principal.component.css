@@ -1,30 +1,64 @@
 .foro-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+  gap: 20px; /* Espacio entre las tarjetas */
   width: 80%;
   margin: 30px auto;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5; /* Color de fondo neutro */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 .pregunta {
   background-color: white;
-  margin-bottom: 20px;
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pregunta:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Estilo para el contenedor de la foto y el nombre del usuario */
+.usuario-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px; /* Espacio entre el usuario y la pregunta */
+}
+
+.usuario-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ddd; /* Borde sutil para la imagen */
+}
+
+.usuario-nombre {
+  font-size: 1.1em;
+  color: #333; /* Color de texto oscuro */
+  font-weight: bold;
+  margin: 0;
 }
 
 .titulo-pregunta {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #5d2083;
+  font-size: 1.1em; /* Más pequeño */
+  font-weight: normal; /* No tan destacado como un título */
+  color: #555; /* Color más suave para la descripción */
   margin: 0;
+  line-height: 1.6; /* Aumento de la altura de línea para mayor legibilidad */
+  white-space: normal; /* Permitimos el ajuste del texto en múltiples líneas */
+  max-height: 80px; /* Altura máxima para limitar el espacio vertical */
+  overflow: hidden; /* Ocultar el texto que exceda la altura */
 }
 
 .autor-pregunta {
   font-size: 0.9em;
-  color: #555;
+  color: #777; /* Color de texto gris */
   margin: 5px 0;
 }
 
@@ -40,21 +74,24 @@
 }
 
 .btn-ver-pregunta {
-  background-color: #5d2083;
+  background-color: #64217d; 
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s ease;
 }
 
 .btn-ver-pregunta:hover {
-  background-color: #34064b;
+  background-color: #4a1144; 
+  transform: scale(1.05); /* Efecto de agrandamiento al pasar el ratón */
 }
 
+/* Estilos para dispositivos pequeños */
 @media (max-width: 768px) {
   .foro-container {
+    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
     width: 95%;
   }
 

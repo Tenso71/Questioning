@@ -1,11 +1,21 @@
 <div class="foro-container">
   <div *ngFor="let pregunta of preguntasFavoritas" class="pregunta">
-    <h3 class="titulo-pregunta">{{ pregunta.titulo }}</h3>
-    <p class="autor-pregunta">Por: {{ pregunta.autor }}</p>
-    <div class="interacciones">
-      <span class="votos">👍 {{ pregunta.votos }} votos</span>
-      <span class="respuestas">💬 {{ pregunta.respuestas }} respuestas</span>
+    <!-- Usuario y foto de perfil -->
+    <div class="usuario-info">
+      <img src="images/dd.jpg" alt="Foto de perfil" class="usuario-img">
+      <p class="usuario-nombre">{{ pregunta.autor }}</p>
     </div>
+
+    <!-- Descripción de la pregunta -->
+    <p class="titulo-pregunta">{{ pregunta.descripcion }}</p>
+
+    <!-- Votos y respuestas -->
+    <div class="interacciones">
+      <span class="votos">Votos: {{ pregunta.votos }}</span>
+      <span class="respuestas">Respuestas: {{ pregunta.respuestas }}</span>
+    </div>
+
+    <!-- Botón para ver la pregunta completa -->
     <button class="btn-ver-pregunta">Ver Pregunta</button>
   </div>
 </div>
