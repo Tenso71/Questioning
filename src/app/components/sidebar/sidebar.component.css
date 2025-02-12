@@ -88,6 +88,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+
 .sidebar-item:hover {
     background: #530b5a;
     transform: scale(1.05);

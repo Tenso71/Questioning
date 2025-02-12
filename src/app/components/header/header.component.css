@@ -15,10 +15,24 @@
 
 .navbar-content {
   display: flex;
-  flex: 1;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.navbar-buttons li {
+  list-style-type: none; /* Quita los puntos de la lista */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
 
 .btn-search {
   background: transparent;
@@ -43,7 +57,7 @@
 
 .search-form {
   display: flex;
-  background: rgba(255,255,255,0.15);
+  background-color:aliceblue;
   border-radius: 30px;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease;
@@ -53,24 +67,24 @@
   flex: 1;
   background: transparent;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 1rem;
   padding: 0.5rem 1rem;
 }
 
 /* Elementos derechos */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+.navbar-nav {
+  display: flex;           /* Establece un contenedor flex para los elementos */
+  gap: 20px;               /* Espacio entre los botones */
+  align-items: center;     /* Alinea los elementos verticalmente al centro */
 }
 
-.navbar-nav {
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
+.nav-right {
+  display: flex;           /* Establece un contenedor flex para los elementos a la derecha */
+  justify-content: flex-end; /* Alinea los elementos a la derecha */
+  align-items: center;     /* Alinea los elementos verticalmente al centro */
 }
+
 
 .btn-nav {
   display: flex;
