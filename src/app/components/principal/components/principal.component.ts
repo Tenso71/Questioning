@@ -147,10 +147,11 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     },
     { 
       descripcion: '¿Qué métodos recomiendas para mantener relaciones saludables a largo plazo?', 
-      autor: 'BlackHeart', 
+      autor: 'NegroExitoso', 
       votos: 60, 
       respuestas: this.generarRespuestas('relaciones', 5),
       mostrar: false,
+      imagen: 'images/avatars/10.jpg',
       usuariosVotaron: [],
       categoria: 'relaciones',
       avatar: 'images/avatars/10.jpg'
@@ -222,11 +223,13 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     this.filteredPreguntas = this.preguntasFavoritas.filter(p => {
       const matchesCategory = this.currentCategory ? p.categoria === this.currentCategory : true;
       const matchesSearch = this.currentSearchTerm 
-        ? p.descripcion.toLowerCase().includes(this.currentSearchTerm.toLowerCase()) 
+        ? p.descripcion.toLowerCase().includes(this.currentSearchTerm.toLowerCase()) ||
+          p.autor.toLowerCase().includes(this.currentSearchTerm.toLowerCase()) // Buscar por nombre de usuario
         : true;
       return matchesCategory && matchesSearch;
     });
   }
+  
 
   /**
    * Genera respuestas simuladas para una categoría dada.
@@ -280,11 +283,11 @@ export class PrincipalComponent implements OnInit, OnDestroy {
         'Comparte experiencias con otras madres.'
       ],
       'tareas-domesticas': [
-        'Organiza tu tiempo y establece rutinas.',
-        'Comparte las responsabilidades familiares.',
-        'Utiliza aplicaciones para planificar las tareas.',
-        'Haz una lista de tareas diarias.',
-        'Simplifica las tareas con ayuda tecnológica.'
+        'Organiza tu tiempo y establece rutinas, porcierto eres muy exitoso me encanta.',
+        'Comparte las responsabilidades familiares,  porcierto eres muy exitoso me encanta',
+        'Utiliza aplicaciones para planificar las tareas,  porcierto eres muy exitoso me encanta',
+        'Haz una lista de tareas diarias,  porcierto eres muy exitoso me encanta',
+        'Simplifica las tareas con ayuda tecnológica,  porcierto eres muy exitoso me encanta'
       ]
     };
 

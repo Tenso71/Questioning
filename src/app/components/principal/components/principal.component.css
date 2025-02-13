@@ -1,4 +1,5 @@
 /* Estilo para el contenedor principal */
+/* Fondo personalizado para toda la página */
 .titulo-principal {
   display: flex;
   align-items: center;
@@ -48,19 +49,24 @@
 }
 
 /* Estilo de cada pregunta */
+/* Contenedor de cada pregunta */
 .pregunta {
+  
   background: #efc5ff;
   padding: 20px;
-  margin: 20px 0;
+  margin: 10px auto; /* Centrar la pregunta en la pantalla */
   border-radius: 12px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 1200px; /* Limita el ancho máximo de la pregunta */
+  width: 100%; /* Ajusta el ancho al 90% del contenedor padre */
 }
 
 .pregunta:hover {
   transform: scale(1.02);
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 .imagen-pregunta {
   width: 100%;  /* Ajusta el tamaño al 100% del contenedor */

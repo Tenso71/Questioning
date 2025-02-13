@@ -4,11 +4,12 @@ import { HeaderComponent } from './components/header/components/header.component
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/components/sidebar.component';
 import { PrincipalComponent } from './components/principal/components/principal.component';
+import { FooterComponent } from './components/footer/footer/footer.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, PrincipalComponent],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent, PrincipalComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
