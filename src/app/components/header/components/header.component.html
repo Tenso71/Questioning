@@ -1,0 +1,59 @@
+<nav class="navbar">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#" (click)="recargarPagina($event)">
+      <img src="/images/logo.png" alt="Questioning Logo" class="logo" />
+    </a>
+
+    <!-- Contenido principal -->
+    <div class="navbar-content">
+      <!-- Barra de búsqueda -->
+      <div class="search-container">
+        <form class="search-form" (submit)="$event.preventDefault()">
+          <input 
+            #searchInput
+            class="search-input" 
+            type="search" 
+            placeholder="Busca en Questioning"
+            (input)="onSearchChange(searchInput.value)">
+          <button class="btn-search" type="submit">
+            <i class="bi bi-search">🔎</i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Botones y usuario -->
+      <div class="nav-right">
+        <!-- Botones del navbar -->
+        <div class="navbar-buttons">
+          <li>
+            <button class="btn-nav">
+              <i class="bi bi-gear"></i>
+              <b>Ajustes</b>
+            </button>
+          </li>
+          <li>
+            <button class="btn-nav">
+              <i class="bi bi-upload"></i>
+              <b>Subir Publicación</b>
+            </button>
+          </li>
+        </div>
+
+        <!-- Usuario -->
+        <div class="user-info">
+          <button class="btn-user" (click)="toggleDropdown()">
+            <span class="username">{{ usuario.nombre }}</span>
+            <img src="images/dd.jpg" alt="Perfil" class="user-img">
+          </button>
+
+          <!-- Menú desplegable (siempre presente para animación) -->
+          <div class="dropdown-menu" [class.show]="dropdownOpen">
+            <button class="dropdown-item" (click)="irA('/login')">Iniciar Sesión</button> <!-- Se invoca irA() -->
+            <button class="dropdown-item" (click)="irA('/settings')">Ajustes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
