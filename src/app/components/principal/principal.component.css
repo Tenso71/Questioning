@@ -2,138 +2,156 @@
 .titulo-principal {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: transparent;
-  padding: 15px;
-  border-radius: 10px;
-  color: black;
- 
-  font-size: 1.5rem;
+  gap: 15px;
+  background: #f2f2f2;
+  padding: 20px;
+  border-radius: 15px;
+  color: #333;
+  font-size: 1.6rem;
   font-weight: bold;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.titulo-principal:hover {
+  background: #e0e0e0;
 }
 
 .titulo-principal img {
-  width: 40px;
+  width: 50px;
   height: auto;
-  
+  transition: transform 0.3s ease;
 }
 
+.titulo-principal img:hover {
+  transform: scale(1.1);
+}
+
+/* Botón para votar */
 .btn-voto {
-  background-color: #28a745; /* Verde */
+  background-color: #9c28a7; /* Verde */
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 12px 25px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
-}
-
-.btn-voto span {
-  margin-right: 8px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-voto:hover {
-  background-color: #218838;
+  background-color: #692188;
+  transform: scale(1.05);
 }
 
+.btn-voto span {
+  margin-right: 10px;
+}
 
 /* Estilo de cada pregunta */
 .pregunta {
-  background: #f9d5ff;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  background: #efc5ff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pregunta:hover {
   transform: scale(1.02);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 .imagen-pregunta {
   width: 100%;  /* Ajusta el tamaño al 100% del contenedor */
-  max-width: 300px;  /* Máximo tamaño de 300px */
+  max-width: 350px;  /* Máximo tamaño de 350px */
   height: auto;  /* Mantener la relación de aspecto */
-  margin-top: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 /* Títulos de preguntas */
 .pregunta h3 {
   margin: 0;
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 /* Datos de la pregunta */
 .pregunta p {
-  margin: 5px 0;
-  font-size: 0.95rem;
+  margin: 8px 0;
+  font-size: 1rem;
   color: #555;
 }
 
 /* Botón para ver respuestas */
 .btn-enviar {
-  background: #c430b8;
+  background: #fefeff;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-enviar:hover {
-  background: #580554;
+  background: #330558;
+  transform: scale(1.05);
 }
 
 /* Contenedor de respuestas */
 .pregunta div {
-  margin-top: 10px;
-  padding-left: 15px;
-  border-left: 3px solid #9240a9;
+  margin-top: 15px;
+  padding-left: 20px;
+  border-left: 5px solid #9240a9;
+  margin-bottom: 15px;
 }
 
 /* Estilo de cada respuesta */
 .pregunta div p {
   background: #f5f5f5;
-  padding: 8px;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
   color: #444;
+  margin-bottom: 10px;
 }
 
 /* Campo de entrada de respuesta */
 input {
-  width: calc(100% - 20px);
-  padding: 8px;
-  margin-top: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  transition: border 0.3s ease-in-out;
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 input:focus {
   border-color: #c129d8;
   outline: none;
+  box-shadow: 0px 0px 8px rgba(193, 41, 216, 0.5);
 }
 
 /* Botón para agregar respuesta */
 button {
-  background: #811178;
+  background: #6c37ad;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 5px;
-  transition: background 0.3s ease;
+  margin-top: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:disabled {
@@ -142,21 +160,43 @@ button:disabled {
 }
 
 button:hover:not(:disabled) {
-  background: purple;
+  background: rgb(68, 0, 128);
+  transform: scale(1.05);
 }
 
 /* Responsividad */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .titulo-principal {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
   }
 
   .titulo-principal img {
-    width: 30px;
+    width: 40px;
+  }
+
+  .pregunta {
+    padding: 15px;
+    margin: 10px 0;
   }
 
   input {
     width: 100%;
+  }
+
+  .btn-voto {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .btn-enviar {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
   }
 }

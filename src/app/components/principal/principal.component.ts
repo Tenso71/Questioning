@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+// principal.component.ts
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { SearchService } from '../service/search.service';
 import * as lunr from 'lunr';
 
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [CommonModule, FormsModule],  
+  imports: [CommonModule, FormsModule],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent {
-  // Simulamos un usuario actual
+export class PrincipalComponent implements OnInit, OnDestroy {
   usuarioActual: string = 'UsuarioDeQuestioning435';
 
   preguntasFavoritas = [
@@ -31,7 +33,6 @@ export class PrincipalComponent {
       respuestas: this.generarRespuestas('películas', 8),
       mostrar: false,
       usuariosVotaron: [],
-  
     },
     { 
       descripcion: '¿Qué juegos de PC recomiendan para quienes tienen una PC de gama media? Estoy buscando algunos títulos interesantes.', 
@@ -40,7 +41,7 @@ export class PrincipalComponent {
       respuestas: this.generarRespuestas('juegos', 25),
       mostrar: false,
       usuariosVotaron: [],
-      imagen: 'images/game.jpg' // Imagen opcional
+      imagen: 'images/game.jpg'
     },
     { 
       descripcion: 'El estrés laboral es algo que afecta a todos, ¿qué estrategias usan para mantenerlo bajo control?', 
@@ -49,12 +50,58 @@ export class PrincipalComponent {
       respuestas: this.generarRespuestas('estrés', 10),
       mostrar: false,
       usuariosVotaron: [],
-      imagen: '' // Sin imagen
+      imagen: ''
+    },
+    { 
+      descripcion: 'Cual es la mejor pelicula de el señor de los anillos en vuestra opinion??', 
+      autor: 'Enano34', 
+      votos: 32, 
+      respuestas: this.generarRespuestas('pelicula', 10),
+      mostrar: false,
+      usuariosVotaron: [],
+      imagen: ''
+    },
+    { 
+      descripcion: 'Como configuro Odoo??, me cuesta mucho trabajo', 
+      autor: 'OdooNewbie', 
+      votos: 8, 
+      respuestas: this.generarRespuestas('odoo', 10),
+      mostrar: false,
+      usuariosVotaron: [],
+      imagen: ''
     }
   ];
-  
 
-  nuevaRespuesta: Record<string, string> = {}; // Objeto para mantener respuestas por pregunta
+  // Variable para el filtrado
+  filteredPreguntas = [...this.preguntasFavoritas];
+
+  nuevaRespuesta: Record<string, string> = {};
+
+  private searchSubscription!: Subscription;
+
+  constructor(private searchService: SearchService) {}
+
+  ngOnInit() {
+    // Se suscribe al observable del término de búsqueda
+    this.searchSubscription = this.searchService.searchTerm$.subscribe(term => {
+      this.filterPreguntas(term);
+    });
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription.unsubscribe();
+  }
+
+  filterPreguntas(term: string) {
+    if (term.trim() === '') {
+      this.filteredPreguntas = [...this.preguntasFavoritas];
+    } else {
+      const lowerTerm = term.toLowerCase();
+      this.filteredPreguntas = this.preguntasFavoritas.filter(pregunta =>
+        pregunta.descripcion.toLowerCase().includes(lowerTerm)
+      );
+    }
+  }
 
   generarRespuestas(categoria: string, cantidad: number): any[] {
     const respuestasPosibles: Record<string, string[]> = {
@@ -83,6 +130,18 @@ export class PrincipalComponent {
         'Minecraft corre en casi cualquier PC.',
         'Disco Elysium es una joya narrativa que no exige mucho.',
         'Factorio es muy entretenido y optimizado.'
+      ],
+      'pelicula': [
+        'La comunidad del anillo',
+        'Las dos torres',
+        'El retorno del rey'
+      ],
+      'odoo': [
+        'Mira tutoriales en YouTube.',
+        'Lee la documentación oficial.',
+        'Pregunta en foros especializados.',
+        'Practica con ejemplos sencillos.',
+        'Participa en grupos de usuarios.'
       ]
     };
 
@@ -102,19 +161,16 @@ export class PrincipalComponent {
         imagen: 'images/dd.jpg',
         texto: this.nuevaRespuesta[pregunta.descripcion]
       });
-      this.nuevaRespuesta[pregunta.descripcion] = ''; // Limpiar solo para esa pregunta
+      this.nuevaRespuesta[pregunta.descripcion] = '';
     }
   }
 
-  // Función para verificar si el usuario ya votó en una pregunta
   usuarioVotado(pregunta: any): boolean {
     return pregunta.usuariosVotaron.includes(this.usuarioActual);
   }
 
-  // Función para votar
   votar(pregunta: any) {
     if (!this.usuarioVotado(pregunta)) {
-      // Aumenta los votos y agrega al usuario a la lista de votantes
       pregunta.votos += 1;
       pregunta.usuariosVotaron.push(this.usuarioActual);
     }

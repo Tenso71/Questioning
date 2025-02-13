@@ -1,6 +1,6 @@
 /* Estilos para escritorio */
 .navbar {
-  background: #75358e;
+  background: #aa4dc4;
   padding: 0.8rem 2rem;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
@@ -90,17 +90,18 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255,255,255,0.1);
+  background: rgb(179, 70, 196);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-nav:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgb(117, 38, 220);
 }
 
 /* Usuario */
@@ -134,4 +135,76 @@
   font-weight: 500;
   font-size: 1rem;
   color: white;
+}
+/* Estilos para el menú desplegable del usuario */
+/* Menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px); /* Debajo del botón */
+  right: 0;
+  background: linear-gradient(135deg, #d286e7 0%, #b346c4 100%);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  
+  /* Inicialmente oculto */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  
+  min-width: 200px;
+  z-index: 100;
+}
+
+/* Cuando se activa el menú */
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Flecha indicadora en la parte superior del menú */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent #d286e7 transparent;
+}
+
+/* Items del menú */
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  color: white;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos adicionales para el botón de usuario */
+.btn-user {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.btn-user:hover,
+.btn-user:focus {
+  background: rgba(255,255,255,0.1);
 }

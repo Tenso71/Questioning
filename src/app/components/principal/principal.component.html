@@ -3,7 +3,7 @@
   <img src="/images/fuego.png" width="50px">
 </div>
 
-<div class="pregunta" *ngFor="let pregunta of preguntasFavoritas">
+<div class="pregunta" *ngFor="let pregunta of filteredPreguntas">
   <h3>{{ pregunta.descripcion }}</h3>
   <p><strong>Autor:</strong> {{ pregunta.autor }}</p>
   <p><strong>Votos:</strong> {{ pregunta.votos }}</p>
@@ -13,15 +13,15 @@
     <img [src]="pregunta.imagen" alt="Imagen de la pregunta" class="imagen-pregunta" />
   </div>
 
-  <!-- Botón para votar con el ícono de la mano OK -->
+  <!-- Botón para votar -->
   <button class="btn-voto" (click)="votar(pregunta)" [disabled]="usuarioVotado(pregunta)">
-    <span>👍</span> Votar
+    👍
   </button>
 
   <button class="btn-enviar" (click)="pregunta.mostrar = !pregunta.mostrar">
-    {{ pregunta.mostrar ? 'Ocultar respuestas' : 'Ver respuestas' }}
+    <img src="/images/comentar.png" alt="Comentar" class="icono-comentar" style="width: 30px;">
   </button>
-
+  
   <div *ngIf="pregunta.mostrar">
     <div *ngFor="let respuesta of pregunta.respuestas">
       <p><strong>{{ respuesta.usuario }}:</strong> {{ respuesta.texto }}</p>
