@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SearchService } from '../../header/service/search.service';
-import { SidebarService } from '../../sidebar/service/sidebar.service';
-import * as lunr from 'lunr';
+import { FooterComponent } from "../../footer/footer/footer.component";
+import { HeaderComponent } from "../../header/components/header.component";
+import { SidebarService } from "../../sidebar/service/sidebar.service"; 
+import { SidebarComponent } from "../../sidebar/components/sidebar.component";  
 
 /**
  * Componente principal de la aplicación.
@@ -21,7 +23,7 @@ import * as lunr from 'lunr';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FooterComponent, HeaderComponent, SidebarComponent],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
@@ -119,6 +121,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
       descripcion: '¿Cómo puedo hacer para que mi bebé se duerma? Tiene 7 meses y no consigo hacerlo dormir.', 
       autor: 'MadreSoltera3432', 
       votos: 29, 
+      imagen: 'images/bebe.png',
       respuestas: this.generarRespuestas('maternidad', 5),
       mostrar: false,
       usuariosVotaron: [],

@@ -31,7 +31,7 @@ body {
 }
 
 /* Contenedor del formulario */
-.login-container {
+.register-container {
     background: white;
     padding: 2rem;
     border-radius: 12px;
@@ -41,9 +41,8 @@ body {
 }
 
 /* Título */
-.login-container h2 {
-   
-    color: #481d77;
+.register-container h2 {
+    color: #6a11cb;
     margin-bottom: 20px;
 }
 
@@ -76,8 +75,8 @@ body {
     box-shadow: 0 0 8px rgba(106, 17, 203, 0.5);
 }
 
-/* Botón de inicio de sesión */
-.login-btn {
+/* Botón de registro */
+.register-btn {
     background: #6a11cb;
     color: white;
     border: none;
@@ -89,22 +88,22 @@ body {
     transition: 0.3s;
 }
 
-.login-btn:hover {
+.register-btn:hover {
     background: #5b0ead;
 }
 
-/* Enlace de registro */
-.register-link {
+/* Enlace de inicio de sesión */
+.login-link {
     margin-top: 15px;
     font-size: 0.9rem;
 }
 
-.register-link a {
+.login-link a {
     color: #6a11cb;
     text-decoration: none;
     font-weight: bold;
 }
 
-.register-link a:hover {
+.login-link a:hover {
     text-decoration: underline;
 }

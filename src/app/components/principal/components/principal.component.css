@@ -14,6 +14,22 @@
   transition: background 0.3s ease;
 }
 
+.proximamente {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  gap: 15px;
+  background: #f2f2f291;
+  padding: 20px;
+  border-radius: 15px;
+  color: #333;
+  font-size: 1.9rem;
+  font-weight: bold;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+  text-align: center; /* Alinea el texto al centro */
+}
+
 
 .titulo-principal img {
   width: 50px;

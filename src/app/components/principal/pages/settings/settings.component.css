@@ -1,0 +1,137 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Fondo principal */
+body {
+    background-color: #f5f5fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor principal con diseño moderno */
+.container {
+    background: #e6d4ff; /* Violeta muy claro */
+    width: 700px;
+    min-height: 85vh;
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título principal */
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a0072; /* Morado oscuro */
+    margin-bottom: 20px;
+}
+
+/* Pestaña de perfil */
+.tab {
+    background: #46145c;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Contenido */
+.content {
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Estilos de los cuadros */
+.box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiquetas */
+.box label {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: #4a0072;
+    margin-bottom: 8px;
+}
+
+/* Campos de entrada */
+.box select,
+.box input,
+.box textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border: 2px solid #b39ddb; /* Morado pastel */
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+    outline: none;
+}
+
+.box input:focus,
+.box textarea:focus,
+.box select:focus {
+    border-color: #673ab7; /* Morado más fuerte */
+}
+
+/* Área de texto */
+.box textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Botón de enviar */
+.send-btn {
+    background: #7b1fa2; /* Morado fuerte */
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    width:25%;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.send-btn:hover {
+    background: #6a0080;
+}
+
+/* Botón de cerrar sesión */
+.logout-btn {
+    background: #ab47bc; /* Morado medio */
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    width: 25%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #8e24aa;
+}
