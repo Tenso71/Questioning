@@ -47,20 +47,20 @@
   width: 100px;
   transition: transform 0.3s ease;
 }
-
 /* Búsqueda */
 .search-container {
   flex: 1;
-  max-width: 600px;
-  margin: 0 2rem;
+  max-width: 800px; /* 🔹 Aumentado para hacer la barra de búsqueda más larga */
+  margin: 0 6rem; /* 🔹 Ajustado para centrar mejor */
 }
 
 .search-form {
   display: flex;
-  background-color:aliceblue;
+  background-color: aliceblue;
   border-radius: 30px;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.5rem; /* 🔹 Un poco más de espacio */
   transition: all 0.3s ease;
+  width: 100%; /* 🔹 Asegura que ocupe todo el contenedor */
 }
 
 .search-input {
@@ -68,9 +68,10 @@
   background: transparent;
   border: none;
   color: rgb(0, 0, 0);
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
+  font-size: 1.1rem; /* 🔹 Un poco más grande */
+  padding: 0.6rem 1rem;
 }
+
 
 /* Elementos derechos */
 .navbar-nav {

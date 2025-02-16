@@ -10,7 +10,7 @@
       @description Enlace principal del navbar que contiene el logo.
       Al hacer clic, se invoca la función recargarPagina() para recargar la página.
     -->
-    <a class="navbar-brand" href="#" (click)="recargarPagina($event)">
+    <a class="navbar-brand" href="" (click)="irA('/')">
       <img src="/images/logo.png" alt="Questioning Logo" class="logo" />
     </a>
 
@@ -49,16 +49,10 @@
         -->
         <div class="navbar-buttons">
           <li>
-            <button class="btn-nav">
-              <i class="bi bi-gear"></i>
-              <b>Ajustes</b>
-            </button>
+            <button class="btn-nav" (click)="irA('/settings')">Ajustes</button>
           </li>
           <li>
-            <button class="btn-nav">
-              <i class="bi bi-upload"></i>
-              <b>Subir Publicación</b>
-            </button>
+            <button class="btn-nav" (click)="irA('/subirpublicacion')">Subir Publicación</button>
           </li>
         </div>
 
