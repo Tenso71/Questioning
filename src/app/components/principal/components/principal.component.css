@@ -162,8 +162,8 @@ input:focus {
 
 /* Botón para agregar respuesta */
 button {
-  background: #6c37ad;
-  color: white;
+  background: #6c37ad00;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 10px 15px;
   border-radius: 8px;
@@ -179,7 +179,7 @@ button:disabled {
 }
 
 button:hover:not(:disabled) {
-  background: rgb(68, 0, 128);
+  background: rgba(60, 9, 9, 0);
   transform: scale(1.05);
 }
 

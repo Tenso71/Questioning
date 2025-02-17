@@ -1,10 +1,10 @@
-
 <app-header></app-header>
 <app-sidebar></app-sidebar>
+
 <!--
   @component PrincipalComponentTemplate
   @description Template principal que muestra el título de la página y la lista de preguntas con sus respectivos detalles, 
-  permitiendo votar y agregar respuestas.
+  permitiendo votar y agregar respuestas, así como dar like/dislike a los comentarios y responder a ellos.
 -->
 
 <!-- Título principal de la página -->
@@ -38,7 +38,7 @@
   -->
   <p>
     <strong>Autor:</strong>
-    <img [src]="pregunta.avatar" width="40px" height="40px"  style="margin-left: 10px; border-radius: 50px;" alt="Foto de perfil" class="foto-perfil" />
+    <img [src]="pregunta.avatar" width="40px" height="40px" style="margin-left: 10px; border-radius: 50px;" alt="Foto de perfil" class="foto-perfil" />
     {{ pregunta.autor }}
   </p>
   
@@ -81,9 +81,32 @@
     -->
     <div *ngFor="let respuesta of pregunta.respuestas">
       <p>
-        <img [src]="respuesta.imagen" width="40px" style="border-radius: 30px; margin-right: 10px;"  alt="Foto de perfil" class="foto-perfil" />
+        <img [src]="respuesta.imagen" width="40px" style="border-radius: 30px; margin-right: 10px;" alt="Foto de perfil" class="foto-perfil" />
         <strong>{{ respuesta.usuario }}:</strong> {{ respuesta.texto }}
       </p>
+      
+      <!-- Botones para dar like/dislike a la respuesta -->
+      <button (click)="darLike(respuesta)" [disabled]="respuesta.votoUsuario">👍 {{ respuesta.likes || 0 }}</button>
+      <button (click)="darDislike(respuesta)" [disabled]="respuesta.votoUsuario">👎 {{ respuesta.dislikes || 0 }}</button>
+
+      <!-- Botón para responder a la respuesta -->
+      <button (click)="respuesta.mostrarRespuestas = !respuesta.mostrarRespuestas">Responder</button>
+
+      <!-- Sección para responder a un comentario -->
+      <div *ngIf="respuesta.mostrarRespuestas">
+        <!-- Itera sobre sub-respuestas -->
+        <div *ngFor="let subRespuesta of respuesta.respuestas" class="sub-respuesta">
+          <p>
+            <img [src]="subRespuesta.imagen" width="30px" style="border-radius: 30px; margin-right: 5px;" alt="Foto de perfil" class="foto-perfil" />
+            <strong>{{ subRespuesta.usuario }}:</strong> {{ subRespuesta.texto }}
+          </p>
+        </div>
+        <!-- Input para responder a un comentario -->
+        <input [(ngModel)]="nuevaRespuesta[respuesta.texto]" placeholder="Responde a este comentario" />
+        <button (click)="agregarRespuestaComentario(respuesta)" [disabled]="!(nuevaRespuesta[respuesta.texto] ?? '').trim()">
+          Enviar
+        </button>
+      </div>
     </div>
 
     <!--
@@ -96,5 +119,6 @@
     </button>
   </div>
 </div>
+
 <div class="proximamente"><p>PROXIMAMENTE...</p></div>
 <app-footer></app-footer>

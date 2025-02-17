@@ -27,7 +27,7 @@
     top: 80px; /* Ajuste para que no cubra el header */
     width: 260px;
     height: calc(100% - 80px);
-    background: #9f5ddc;
+    background: #b568e8;
     padding: 20px;
     transition: left 0.3s ease-in-out;
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
@@ -75,7 +75,7 @@
 
 /* ===== Estilos de los Botones ===== */
 .sidebar-item {
-    background: #a68af4;
+    background: #e68af4;
     color: white;
     border: none;
     padding: 12px;

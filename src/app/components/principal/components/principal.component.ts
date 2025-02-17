@@ -150,7 +150,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     },
     { 
       descripcion: '¿Qué métodos recomiendas para mantener relaciones saludables a largo plazo?', 
-      autor: 'NegroExitoso', 
+      autor: 'HombreExitoso', 
       votos: 60, 
       respuestas: this.generarRespuestas('relaciones', 5),
       mostrar: false,
@@ -227,7 +227,7 @@ export class PrincipalComponent implements OnInit, OnDestroy {
       const matchesCategory = this.currentCategory ? p.categoria === this.currentCategory : true;
       const matchesSearch = this.currentSearchTerm 
         ? p.descripcion.toLowerCase().includes(this.currentSearchTerm.toLowerCase()) ||
-          p.autor.toLowerCase().includes(this.currentSearchTerm.toLowerCase()) // Buscar por nombre de usuario
+          p.autor.toLowerCase().includes(this.currentSearchTerm.toLowerCase())
         : true;
       return matchesCategory && matchesSearch;
     });
@@ -340,6 +340,50 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     if (!this.usuarioVotado(pregunta)) {
       pregunta.votos += 1;
       pregunta.usuariosVotaron.push(this.usuarioActual);
+    }
+  }
+
+  // FUNCIONALIDADES NUEVAS PARA COMENTARIOS (LIKE/DISLIKE Y RESPUESTAS A COMENTARIOS)
+
+  /**
+   * Agrega un like a una respuesta.
+   * Solo se permite si el usuario aún no ha votado esa respuesta.
+   * @param respuesta Objeto que representa la respuesta.
+   */
+  darLike(respuesta: any) {
+    if (!respuesta.votoUsuario) {
+      respuesta.likes = (respuesta.likes || 0) + 1;
+      respuesta.votoUsuario = 'like';
+    }
+  }
+
+  /**
+   * Agrega un dislike a una respuesta.
+   * Solo se permite si el usuario aún no ha votado esa respuesta.
+   * @param respuesta Objeto que representa la respuesta.
+   */
+  darDislike(respuesta: any) {
+    if (!respuesta.votoUsuario) {
+      respuesta.dislikes = (respuesta.dislikes || 0) + 1;
+      respuesta.votoUsuario = 'dislike';
+    }
+  }
+
+  /**
+   * Agrega una respuesta a un comentario (respuesta) existente.
+   * @param respuesta Objeto que representa la respuesta a la que se responderá.
+   */
+  agregarRespuestaComentario(respuesta: any) {
+    if (this.nuevaRespuesta[respuesta.texto]?.trim()) {
+      if (!respuesta.respuestas) {
+        respuesta.respuestas = [];
+      }
+      respuesta.respuestas.push({
+        usuario: 'UsuarioDeQuestioning435',
+        imagen: 'images/dd.jpg',
+        texto: this.nuevaRespuesta[respuesta.texto]
+      });
+      this.nuevaRespuesta[respuesta.texto] = '';
     }
   }
 }
