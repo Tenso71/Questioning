@@ -1,0 +1,124 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!--
+  @component PrincipalComponentTemplate
+  @description Template principal que muestra el título de la página y la lista de preguntas con sus respectivos detalles, 
+  permitiendo votar y agregar respuestas, así como dar like/dislike a los comentarios y responder a ellos.
+-->
+
+<!-- Título principal de la página -->
+<div class="titulo-principal">
+  <!--
+    @name PageTitle
+    @description Muestra el título de la página.
+  -->
+  <h1>{{ pageTitle }}</h1>
+  <!--
+    @name TitleImage
+    @description Imagen decorativa ubicada al lado del título.
+  -->
+  <img src="/images/fuego.png" width="50px">
+</div>
+
+<!--
+  @section PreguntasList
+  @description Itera sobre el arreglo 'filteredPreguntas' y muestra cada pregunta con sus detalles (descripción, autor, votos, imagen y respuestas).
+-->
+<div class="pregunta" *ngFor="let pregunta of filteredPreguntas">
+  <!--
+    @subsection PreguntaDescription
+    @description Muestra la descripción o el enunciado de la pregunta.
+  -->
+  <h3>{{ pregunta.descripcion }}</h3>
+  
+  <!--
+    @subsection PreguntaAuthor
+    @description Muestra el autor de la pregunta junto con su avatar.
+  -->
+  <p>
+    <strong>Autor:</strong>
+    <img [src]="pregunta.avatar" width="40px" height="40px" style="margin-left: 10px; border-radius: 50px;" alt="Foto de perfil" class="foto-perfil" />
+    {{ pregunta.autor }}
+  </p>
+  
+  <!--
+    @subsection PreguntaVotes
+    @description Muestra la cantidad de votos que tiene la pregunta.
+  -->
+  <p><strong>Votos:</strong> {{ pregunta.votos }}</p>
+
+  <!--
+    @subsection PreguntaImage
+    @description Si la pregunta tiene imagen asociada, se muestra aquí.
+  -->
+  <div *ngIf="pregunta.imagen">
+    <img [src]="pregunta.imagen" style="border-radius: 5px;" alt="Imagen de la pregunta" class="imagen-pregunta" />
+  </div>
+
+  <!--
+    @subsection VoteButton
+    @description Botón para votar por la pregunta. Se deshabilita si el usuario ya ha votado.
+  -->
+  <button class="btn-voto" (click)="votar(pregunta)" [disabled]="usuarioVotado(pregunta)">👍</button>
+
+  <!--
+    @subsection ToggleComments
+    @description Botón para alternar la visualización de la sección de comentarios, mostrando o ocultando las respuestas.
+  -->
+  <button class="btn-enviar" (click)="pregunta.mostrar = !pregunta.mostrar">
+    <img src="/images/comentar.png" alt="Comentar" class="icono-comentar" style="width: 30px;">
+  </button>
+  
+  <!--
+    @subsection CommentsSection
+    @description Sección de respuestas que se muestra al activar la opción de comentarios.
+  -->
+  <div *ngIf="pregunta.mostrar">
+    <!--
+      @subsubsection ResponseList
+      @description Itera sobre el arreglo 'pregunta.respuestas' y muestra cada respuesta con la imagen del usuario y el contenido.
+    -->
+    <div *ngFor="let respuesta of pregunta.respuestas">
+      <p>
+        <img [src]="respuesta.imagen" width="40px" style="border-radius: 30px; margin-right: 10px;" alt="Foto de perfil" class="foto-perfil" />
+        <strong>{{ respuesta.usuario }}:</strong> {{ respuesta.texto }}
+      </p>
+      
+      <!-- Botones para dar like/dislike a la respuesta -->
+      <button (click)="darLike(respuesta)" [disabled]="respuesta.votoUsuario">👍 {{ respuesta.likes || 0 }}</button>
+      <button (click)="darDislike(respuesta)" [disabled]="respuesta.votoUsuario">👎 {{ respuesta.dislikes || 0 }}</button>
+
+      <!-- Botón para responder a la respuesta -->
+      <button (click)="respuesta.mostrarRespuestas = !respuesta.mostrarRespuestas">Responder</button>
+
+      <!-- Sección para responder a un comentario -->
+      <div *ngIf="respuesta.mostrarRespuestas">
+        <!-- Itera sobre sub-respuestas -->
+        <div *ngFor="let subRespuesta of respuesta.respuestas" class="sub-respuesta">
+          <p>
+            <img [src]="subRespuesta.imagen" width="30px" style="border-radius: 30px; margin-right: 5px;" alt="Foto de perfil" class="foto-perfil" />
+            <strong>{{ subRespuesta.usuario }}:</strong> {{ subRespuesta.texto }}
+          </p>
+        </div>
+        <!-- Input para responder a un comentario -->
+        <input [(ngModel)]="nuevaRespuesta[respuesta.texto]" placeholder="Responde a este comentario" />
+        <button (click)="agregarRespuestaComentario(respuesta)" [disabled]="!(nuevaRespuesta[respuesta.texto] ?? '').trim()">
+          Enviar
+        </button>
+      </div>
+    </div>
+
+    <!--
+      @subsubsection AddResponse
+      @description Campo de entrada y botón para agregar una nueva respuesta a la pregunta.
+    -->
+    <input [(ngModel)]="nuevaRespuesta[pregunta.descripcion]" placeholder="Escribe tu respuesta" />
+    <button (click)="agregarRespuesta(pregunta)" [disabled]="!(nuevaRespuesta[pregunta.descripcion] ?? '').trim()">
+      Agregar respuesta
+    </button>
+  </div>
+</div>
+
+<div class="proximamente"><p>PROXIMAMENTE...</p></div>
+<app-footer></app-footer>

@@ -1,0 +1,83 @@
+<!--
+  @component NavbarComponentTemplate
+  @description Template del componente Navbar.
+  Este componente muestra el logo, la barra de búsqueda, los botones de navegación y la información del usuario con un menú desplegable.
+-->
+<nav class="navbar">
+  <div class="container">
+    <!--
+      @name NavbarBrand
+      @description Enlace principal del navbar que contiene el logo.
+      Al hacer clic, se invoca la función recargarPagina() para recargar la página.
+    -->
+    <a class="navbar-brand" href="" (click)="irA('/')">
+      <img src="/images/logo.png" alt="Questioning Logo" class="logo" />
+    </a>
+
+    <!--
+      @name NavbarContent
+      @description Contenedor principal del contenido del navbar.
+    -->
+    <div class="navbar-content">
+      <!--
+        @subsection SearchContainer
+        @description Contenedor de la barra de búsqueda.
+        Permite buscar contenido en Questioning.
+      -->
+      <div class="search-container">
+        <form class="search-form" (submit)="$event.preventDefault()">
+          <input 
+            #searchInput
+            class="search-input" 
+            type="search" 
+            placeholder="Busca en Questioning"
+            (input)="onSearchChange(searchInput.value)">
+         
+            <i class="bi bi-search">🔎</i>
+       
+        </form>
+      </div>
+
+      <!--
+        @subsection NavRight
+        @description Sección derecha del navbar que contiene botones de acción y la información del usuario.
+      -->
+      <div class="nav-right">
+        <!--
+          @subsubsection NavbarButtons
+          @description Lista de botones para acceder a Ajustes y Subir Publicación.
+        -->
+        <div class="navbar-buttons">
+          <li>
+            <button class="btn-nav" (click)="irA('/settings')">Ajustes</button>
+          </li>
+          <li>
+            <button class="btn-nav" (click)="irA('/subirpublicacion')">Subir Publicación</button>
+          </li>
+        </div>
+
+        <!--
+          @subsubsection UserInfo
+          @description Muestra la información del usuario, incluyendo el nombre y la imagen de perfil.
+          Al hacer clic en el botón se despliega el menú de usuario.
+        -->
+        <div class="user-info">
+          <button class="btn-user" (click)="toggleDropdown()">
+            <span class="username">{{ usuario.nombre }}</span>
+            <img src="images/dd.jpg" alt="Perfil" class="user-img">
+          </button>
+
+          <!--
+            @subsubsection DropdownMenu
+            @description Menú desplegable que ofrece opciones de navegación, como iniciar sesión o acceder a ajustes.
+            Se muestra cuando la variable 'dropdownOpen' es verdadera.
+          -->
+          <div class="dropdown-menu" [class.show]="dropdownOpen">
+            <button class="dropdown-item" (click)="irA('/login')">Iniciar Sesión</button>
+            <button class="dropdown-item" (click)="irA('/settings')">Ajustes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

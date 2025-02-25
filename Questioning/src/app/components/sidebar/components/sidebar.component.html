@@ -1,0 +1,48 @@
+<!--
+  @component SidebarComponentTemplate
+  @description Template del Sidebar que permite la navegación por temas destacados.
+-->
+
+<!--
+  @name SidebarToggleButton
+  @description Botón para abrir el Sidebar. Usualmente ubicado sobre el header.
+-->
+<button id="sidebar-toggle" class="sidebar-btn" (click)="toggleSidebar()">☰</button>
+
+<!--
+  @section Sidebar
+  @description Contenedor principal del Sidebar. Se activa cuando 'isActive' es verdadero.
+-->
+<div id="sidebar" class="sidebar" [class.active]="isActive">
+  <!--
+    @subsection CloseButton
+    @description Botón para cerrar el Sidebar.
+  -->
+  <button class="close-btn" (click)="toggleSidebar()">X</button>
+
+  <!--
+    @subsection SidebarTitle
+    @description Título fijo del Sidebar que indica "Temas Destacados".
+  -->
+  <h2 class="sidebar-title">Temas Destacados</h2>
+
+  <!--
+    @subsection SidebarList
+    @description Lista de botones que representan los temas destacados. Cada botón invoca 'selectTheme'
+    con el nombre y la categoría correspondiente.
+  -->
+  <div class="sidebar-list">
+    <button class="sidebar-item" (click)="selectTheme('Gaming', 'gaming')">🎮 Gaming</button>
+    <button class="sidebar-item" (click)="selectTheme('Informática', 'informatica')">💻 Informática</button>
+    <button class="sidebar-item" (click)="selectTheme('Maternidad', 'maternidad')">👶 Maternidad</button>
+    <button class="sidebar-item" (click)="selectTheme('Cine', 'cine')">🎬 Cine</button>
+    <button class="sidebar-item" (click)="selectTheme('Relaciones', 'relaciones')">❤️ Relaciones</button>
+    <button class="sidebar-item" (click)="selectTheme('Tareas Domésticas', 'tareas-domesticas')">🏡 Tareas Domésticas</button>
+  </div>
+
+  <!--
+    @subsection SidebarLogo
+    @description Imagen del logo en el Sidebar que sirve de elemento decorativo.
+  -->
+  <img src="/images/logo.png" style="margin-left: 30px;" alt="Sidebar Background" width="150px" class="sidebar-logo" />
+</div>
