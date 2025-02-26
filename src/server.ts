@@ -5,6 +5,7 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
+import cors from 'cors'; //Importar CORS
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,31 +15,26 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+//Habilitar CORS para permitir solicitudes desde Netlify u otro frontend
+app.use(cors({
+  origin: "https://questioning.netlify.app", 
+  methods: "GET, POST, PUT, DELETE",
+  allowedHeaders: "Content-Type, Authorization"
+}));
 
 /**
- * Serve static files from /browser
+ * Servir archivos estáticos desde la carpeta /browser
  */
 app.use(
   express.static(browserDistFolder, {
-    maxAge: '1y',
+    maxAge: '1y', // Cachear archivos estáticos por un año
     index: false,
     redirect: false,
   }),
 );
 
 /**
- * Handle all other requests by rendering the Angular application.
+ * Manejar todas las demás solicitudes renderizando la aplicación Angular
  */
 app.use('/**', (req, res, next) => {
   angularApp
@@ -50,17 +46,17 @@ app.use('/**', (req, res, next) => {
 });
 
 /**
- * Start the server if this module is the main entry point.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ * Iniciar el servidor si este módulo es el punto de entrada principal
+ * El servidor escucha en el puerto definido por la variable de entorno `PORT` o usa 4000 por defecto.
  */
 if (isMainModule(import.meta.url)) {
   const port = process.env['PORT'] || 4000;
   app.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    console.log(`Servidor de Node Express ejecutándose en http://localhost:${port}`);
   });
 }
 
 /**
- * The request handler used by the Angular CLI (dev-server and during build).
+ * Manejador de solicitudes utilizado por Angular CLI (modo desarrollo y durante la construcción).
  */
 export const reqHandler = createNodeRequestHandler(app);

@@ -35,8 +35,8 @@ export class PrincipalComponent implements OnInit, OnDestroy {
     { descripcion: 'Este año han salido muchas buenas películas, pero ¿cuál creen que es la mejor de todas?', autor: 'CineFan23', votos: 95, respuestas: [], mostrar: false, usuariosVotaron: [], categoria: 'cine', avatar: 'images/avatars/2.jpg' },
     { descripcion: '¿Qué juegos de PC recomiendan para quienes tienen una PC de gama media?', autor: 'GamerX', votos: 150, respuestas: [], mostrar: false, usuariosVotaron: [], imagen: 'images/game.jpg', categoria: 'gaming', avatar: 'images/avatars/3.png' },
     { descripcion: '¿Qué consejos tienen sobre la maternidad en los primeros meses?', autor: 'MaternidadExpert', votos: 75, respuestas: [], mostrar: false, usuariosVotaron: [], categoria: 'maternidad', avatar: 'images/avatars/4.png' },
-    { descripcion: '¿Cómo mantener una relación sana y duradera?', autor: 'RelacionesExpert', votos: 100, respuestas: [], mostrar: false, usuariosVotaron: [], categoria: 'relaciones', avatar: 'images/avatars/5.png' },
-    { descripcion: '¿Cuál es la mejor forma de organizar las tareas domésticas diarias?', autor: 'OrganizaTodo', votos: 85, respuestas: [], mostrar: false, usuariosVotaron: [], categoria: 'tareas-domesticas', avatar: 'images/avatars/6.png' }
+    { descripcion: '¿Cómo mantener una relación sana y duradera?', autor: 'RelacionesExpert', votos: 100, respuestas: [], mostrar: false, usuariosVotaron: [], categoria: 'relaciones', avatar: '/images/avatars/5.png' },
+    { descripcion: '¿Cuál es la mejor forma de organizar las tareas domésticas diarias?', autor: 'OrganizaTodo', votos: 85, respuestas: [], mostrar: false, usuariosVotaron: [], categoria: 'tareas-domesticas', avatar: '/images/avatars/6.png' }
   ];
 
   filteredPreguntas = [...this.preguntasFavoritas];
